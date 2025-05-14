@@ -26,62 +26,41 @@ ENTER YOUR CODE
 #Reg.NO-212223060119
 #Name-Kavindra T G
 
-from dataclasses import dataclass
-from typing import Optional, List
-
-@dataclass
-class Node:
-    value: int
-    left: Optional['Node'] = None
-    right: Optional['Node'] = None
-
-def _build_bst_from_sorted_values(sorted_values: List[int]) -> Optional[Node]:
-    if not sorted_values:
+from binarytree import Node
+def _build_bst_from_sorted_values(sorted_values):
+    
+    if len(sorted_values) == 0:
         return None
-    mid = len(sorted_values) // 2
-    root = Node(sorted_values[mid])
-    root.left = _build_bst_from_sorted_values(sorted_values[:mid])
-    root.right = _build_bst_from_sorted_values(sorted_values[mid+1:])
-    return root
+    mid_index = len(sorted_values) // 2
+    root = Node(sorted_values[mid_index])
+    root.left = _build_bst_from_sorted_values(sorted_values[:mid_index])
+    root.right = _build_bst_from_sorted_values(sorted_values[mid_index + 1 :])  
+    return (root)
 
-def left_subtree(root: Optional[Node]):
-    if root and root.left:
-        print("Left Subtree:")
-        postorder_traversal(root.left)
-    else:
-        print("No Left Subtree")
+def left_subtree(l):
+  print("Left Subtree : ")
+  for i in l[1].values:
+    print(i,"-->",end="")
+  return 
 
-def postorder_traversal(root: Optional[Node]):
-    if root:
-        postorder_traversal(root.left)
-        postorder_traversal(root.right)
-        print(root.value, end=' ')
+a=[]
+size=int(input())
+for i in range(0,size):
+  val=int(input())
+  a.append(val)
+x=sorted(a)
 
-def is_bst(root: Optional[Node], min_val=float('-inf'), max_val=float('inf')) -> bool:
-    if root is None:
-        return True
-    if not (min_val < root.value < max_val):
-        return False
-    return (is_bst(root.left, min_val, root.value) and
-            is_bst(root.right, root.value, max_val))
 
-if __name__ == "__main__":
-    n = int(input("Enter the number of elements: "))
-    a = []
-    for _ in range(n):
-        a.append(int(input("Enter value: ")))
-    a.sort()
-    root = _build_bst_from_sorted_values(a)
-    print("\nPostorder Traversal of the BST:")
-    postorder_traversal(root)
-    print("\n")
-    left_subtree(root)
-    print("\nIs the tree a Binary Search Tree?", is_bst(root))
+l=_build_bst_from_sorted_values(x)
+print("Postorder :",l.postorder)
+left_subtree(l)
+print("\nIs this a Binary Search Tree? ",l.is_bst)
 
 ```
 
 ## OUTPUT
-![image](https://github.com/user-attachments/assets/c6669741-6c1b-491c-a9c9-c8426f9fb0e0)
+![image](https://github.com/user-attachments/assets/b4c76c11-9380-4cda-8f7e-c04d91eb70b5)
+
 
 
 ## RESULT
