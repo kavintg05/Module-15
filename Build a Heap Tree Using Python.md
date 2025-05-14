@@ -23,27 +23,14 @@ To write a Python program to build a heap tree using appropriate Python package 
 #Name-Kavindra T G
 # Step 2: Import the heapq module
 import heapq
-
-# Step 3: Define the heaptree function
 def heaptree(H):
-    # Step 4: Convert the list into a min-heap
     heapq.heapify(H)
-    # Step 5: Print the created heap
-    print("Min-Heap:", H)
-
-# Example usage
-if __name__ == "__main__":
-    # Sample list
-    H = [21, 1, 45, 78, 3, 5]
-    print("Original List:", H)
-    
-    # Step 1 and Step 6: Start and end
-    heaptree(H)
-
+    print(f"The created Heap is {H}")
 ```
 
 ## OUTPUT
-![image](https://github.com/user-attachments/assets/75b79891-bc9c-4542-bd8b-d3fd46fc8673)
+![image](https://github.com/user-attachments/assets/f8bead59-b6b3-40da-a00c-3291b21dd872)
+
 
 
 ## RESULT
